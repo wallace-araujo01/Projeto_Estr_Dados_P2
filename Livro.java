@@ -5,7 +5,7 @@ public class Livro {
     private int anoPub;
     private boolean disponivel;
 
-    public Livro(String isbn, String titulo, String autor, int anoPub, boolean disponivel) {
+    public Livro(String isbn, String titulo, String autor, int anoPub) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -13,44 +13,27 @@ public class Livro {
         this.disponivel = true;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
+    public String getIsbn()       { return isbn; }
+    public String getTitulo()     { return titulo; }
+    public String getAutor()      { return autor; }
+    public int getAnoPub()        { return anoPub; }
+    public boolean isDisponivel() { return disponivel; }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public int getAnoPub() {
-        return anoPub;
-    }
-
-    public boolean isDisponivel() {
-        return disponivel;
-    }
-
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = true;
-    }
+    public void setDisponivel(boolean disponivel) { this.disponivel = disponivel; }
+    public void setTitulo(String titulo)          { this.titulo = titulo; }
+    public void setAutor(String autor)            { this.autor = autor; }
 
     @Override
     public String toString() {
-        return "[" + isbn + "] " + titulo + " - " + autor + " ( " + anoPub + " ) [" + disponivel + "]";
+        String status = disponivel ? "DISPONIVEL" : "EMPRESTADO";
+        return "[" + isbn + "] " + titulo + " - " + autor + " (" + anoPub + ") [" + status + "]";
     }
+
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+        if (!(obj instanceof Livro)) return false;
+        Livro outro = (Livro) obj;
+        return this.isbn.equals(outro.isbn);
     }
 }
