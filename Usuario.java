@@ -3,25 +3,28 @@ public class Usuario {
     private String nome;
     private String email;
 
-    public int getMatricula() {
-        return matricula;
-    }
-    public String getNome() {
-        return nome;
-    }
-    public String getEmail() {
-        return email;
-    } 
-    public void setEmail(String email) {
+    public Usuario(int matricula, String nome, String email) {
+        this.matricula = matricula;
+        this.nome = nome;
         this.email = email;
+    }
+
+    public int getMatricula() { return matricula; }
+    public String getNome()   { return nome; }
+    public String getEmail()  { return email; }
+
+    public void setEmail(String email) { this.email = email; }
+
+    @Override
+    public String toString() {
+        return "Usuario[" + matricula + "] " + nome + " <" + email + ">";
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-    @Override
-    public String toString() {
-        return "[" + matricula + "] " + nome + " - " + email;
+        if (this == obj) return true;
+        if (!(obj instanceof Usuario)) return false;
+        Usuario outro = (Usuario) obj;
+        return this.matricula == outro.matricula;
     }
 }
